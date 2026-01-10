@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>De Dignis Insanis Opera</title>
+  <meta name="description" content="Site do grupo de RPG — De Dignis Insanis Opera" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="topbar" id="top">
+    <div class="container nav">
+      <div class="brand">
+        <div class="pill" title="RPG">
+          ⚔️ <span>RPG</span>
+        </div>
+        <div class="brandText">
+          <div class="titleFancy" data-fx="glow">𝕯𝖊 𝕯𝖎𝖌𝖓𝖎𝖘 𝕴𝖓𝖘𝖆𝖓𝖎𝖘 𝕺𝖕𝖊𝖗𝖆</div>
+          <div class="subtitle">Crônicas • Personagens • Aventuras</div>
+        </div>
+      </div>
+
+      <nav class="navlinks" aria-label="Navegação">
+        <a href="#sobre">Sobre</a>
+        <a href="#personagens">Personagens</a>
+        <a href="#cronicas">Crônicas</a>
+      </nav>
+
+      <button class="menuBtn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobileMenu" id="mobileMenu" aria-hidden="true">
+      <a href="#sobre">Sobre</a>
+      <a href="#personagens">Personagens</a>
+      <a href="#cronicas">Crônicas</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="heroLeft">
+          <div class="kicker reveal">Grupo de RPG • D&amp;D</div>
+          <h1 class="reveal" style="--d: 0.05s;">De Dignis Insanis Opera</h1>
+          <p class="lead reveal" style="--d: 0.12s;">
+            Um grupo de aventureiros, decisões difíceis e caos elegante.
+            Aqui você encontra <strong>histórias</strong>, <strong>fichas</strong> e a galeria de <strong>personagens</strong>.
+          </p>
+
+          <div class="heroCtas reveal" style="--d: 0.2s;">
+            <a class="btn primary" href="#personagens">Ver personagens</a>
+            <a class="btn ghost" href="#sobre">Conhecer o grupo</a>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="sigilCard reveal" style="--d: 0.12s;">
+            <div class="sigilTop">
+              <div class="sigilMark" aria-hidden="true">📜</div>
+              <div class="sigilMeta">
+                <div class="sigilTitle">Jornal de Hermes</div>
+              </div>
+            </div>
+
+            <div class="mapImageCard" aria-label="Cartaz - Pierre Bourbon">
+              <img src="assets/pierre-bourbon-procurado.png" alt="Cartaz de procurado - Pierre Bourbon">
+            </div>
+
+          </div>
+</div>
+      </div>
+
+      <a class="scrollHint" href="#sobre" aria-label="Rolar para baixo">
+        <span class="mouse" aria-hidden="true"></span>
+        <span>Role</span>
+      </a>
+    </section>
+
+    <section id="sobre" class="section">
+      <div class="container">
+        <div class="sectionHead reveal">
+          <h2>Sobre</h2>
+          <p>Um lugar para guardar a história da mesa — e deixar tudo bonito e fácil de navegar.</p>
+        </div>
+
+        <div class="aboutGrid">
+          <article class="glassCard reveal" style="--d: 0.05s;">
+            <h3>O que você encontra aqui</h3>
+            <ul class="bullets">
+              <li><strong>Fichas</strong> e informações de personagens</li>
+              <li><strong>Histórias</strong> e anotações do diário</li>
+              <li><strong>Desenhos</strong> e referências visuais</li>
+              <li>Links rápidos e navegação fluida</li>
+            </ul>
+          </article>
+
+          <article class="glassCard reveal" style="--d: 0.12s;">
+            <h3>Estilo</h3>
+            <p>
+              Mantive um visual “premium” com cards em vidro, destaque para o título e animações suaves ao rolar.
+              Você consegue <strong>ligar/desligar</strong> o fundo fixo e as animações no topo.
+            </p>
+            <div class="miniStats">
+              <div class="stat">
+                <div class="num" data-count="6">0</div>
+                <div class="lbl">parcelas de caos</div>
+              </div>
+              <div class="stat">
+                <div class="num" data-count="7">0</div>
+                <div class="lbl">personagens</div>
+              </div>
+              <div class="stat">
+                <div class="num" data-count="3">0</div>
+                <div class="lbl">seções</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="personagens" class="section">
+      <div class="container">
+        <div class="sectionHead reveal">
+          <h2>Personagens</h2>
+          <p>Cards com hover, brilho sutil, tilt e entrada animada.</p>
+        </div>
+
+        <div class="toolbar reveal">
+          <div class="search">
+            <input id="searchInput" type="search" placeholder="Buscar personagem..." autocomplete="off" />
+            <span class="kbd">Ctrl /</span>
+          </div>
+
+          <div class="filters">
+            <button class="pillBtn isActive" data-filter="all">Todos</button>
+            <button class="pillBtn" data-filter="party">Grupo</button>
+            <button class="pillBtn" data-filter="mestre">Mestre</button>
+          </div>
+        </div>
+
+        <div class="cards" id="cards">
+          <!-- Cards gerados via JS -->
+        </div>
+      </div>
+    </section>
+
+    <section id="cronicas" class="section">
+      <div class="container">
+        <div class="sectionHead reveal">
+          <h2>Crônicas</h2>
+          <p>Espaço para registrar capítulos, eventos e momentos marcantes.</p>
+        </div>
+
+        <div class="chronicles">
+          <article class="chronicleCard reveal" style="--d: 0.06s;">
+            <h3>Capítulo 1</h3>
+            <p>Adicione aqui o texto das crônicas. Este bloco é um “modelo” bonito para você duplicar.</p>
+            <div class="chronicleMeta">
+              <span class="tag">diário</span>
+              <span class="tag">campanha</span>
+            </div>
+          </article>
+
+          <article class="chronicleCard reveal" style="--d: 0.12s;">
+            <h3>Capítulo 2</h3>
+            <p>Você pode transformar isso em uma lista, timeline, ou abrir uma página separada por capítulo.</p>
+            <div class="chronicleMeta">
+              <span class="tag">combate</span>
+              <span class="tag">mistério</span>
+            </div>
+          </article>
+
+          <article class="chronicleCard reveal" style="--d: 0.18s;">
+            <h3>Capítulo 3</h3>
+            <p>O layout já está pronto para crescer sem quebrar no celular.</p>
+            <div class="chronicleMeta">
+              <span class="tag">NPCs</span>
+              <span class="tag">loot</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerInner">
+      <div class="footLeft">
+        <div class="footTitle">De Dignis Insanis Opera</div>
+        <div class="footSub">Feito em HTML + CSS + JavaScript</div>
+      </div>
+      <div class="footRight">
+        <a href="#top" class="toTop">↑ voltar ao topo</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Detalhes do personagem">
+    <div class="modalBackdrop" data-close></div>
+    <div class="modalCard" role="document">
+      <button class="modalClose" data-close aria-label="Fechar">✕</button>
+      <div class="modalBody">
+        <div class="modalCover" id="modalCover"></div>
+        <div class="modalContent">
+          <div class="modalTitle" id="modalTitle">Personagem</div>
+          <div class="modalSubtitle" id="modalSubtitle">Ficha • História • Diário • Desenhos</div>
+
+          <div class="modalGrid">
+            <div class="modalBox">
+              <div class="boxTitle">Atalhos</div>
+              <div class="boxChips">
+                <span class="chip">📄 ficha</span>
+                <span class="chip">📚 história</span>
+                <span class="chip">🤝 relacionados</span>
+                <span class="chip">🕯️ diário</span>
+                <span class="chip">🎨 desenhos</span>
+              </div>
+            </div>
+
+            <div class="modalBox">
+              <div class="boxTitle">Ação</div>
+              <p class="boxText">
+                Aqui você pode linkar para uma página do personagem (ex.: <code>personagem.html?id=terina</code>)
+                ou trocar o botão para abrir outra rota no futuro.
+              </p>
+              <a class="btn primary" id="modalOpenPage" href="#">Abrir página do personagem</a>
+            </div>
+          </div>
+
+          <div class="small muted">Dica: as imagens e nomes ficam fáceis de trocar no arquivo <code>script.js</code>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
