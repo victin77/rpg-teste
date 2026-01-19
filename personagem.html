@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personagem • De Dignis Insanis Opera</title>
+  <meta name="description" content="Painel do personagem — ficha, história, diário e mais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="personagem.css" />
+</head>
+
+<body class="charPage">
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Header fixo -->
+  <header class="charTopbar" id="charTop">
+    <div class="container charNav">
+      <div class="charLeft">
+        <a class="charBack" href="index.html" aria-label="Voltar para o início">←</a>
+        <div class="charNameWrap">
+          <div class="charName" id="c_name">PERSONAGEM</div>
+          <div class="charMeta" id="c_meta">—</div>
+        </div>
+      </div>
+
+      <nav class="charTabs" aria-label="Abas do personagem">
+        <button class="tabBtn isActive" data-tab="ficha" type="button">Ficha</button>
+        <button class="tabBtn" data-tab="historia" type="button">História</button>
+        <button class="tabBtn" data-tab="relacionados" type="button">Relacionados</button>
+        <button class="tabBtn" data-tab="diario" type="button">Diário</button>
+        <button class="tabBtn" data-tab="desenhos" type="button">Desenhos</button>
+      </nav>
+
+      <div class="charRight">
+        <label class="charSearch" aria-label="Buscar na página">
+          <span class="charSearchIcon" aria-hidden="true">⌕</span>
+          <input id="pageSearch" type="search" placeholder="Buscar…" autocomplete="off" />
+        </label>
+
+        <button class="iconBtn" id="themeToggle" type="button" aria-label="Alternar tema (claro/escuro)">
+          <span aria-hidden="true">☾</span>
+        </button>
+
+        <button class="iconBtn" id="settingsBtn" type="button" aria-label="Configurações">
+          <span aria-hidden="true">⚙</span>
+        </button>
+
+        <div class="charAvatar" id="userAvatar" title="Usuário">
+          <span aria-hidden="true">👤</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="charMain" id="main">
+    <!-- =========================
+         ABA: FICHA
+    ========================== -->
+    <section class="tabPanel isActive" id="tab-ficha" data-tabpanel="ficha">
+      <div class="container">
+        <div class="charGrid">
+          <!-- Coluna esquerda -->
+          <aside class="col left">
+            <section class="cCard profileCard" aria-label="Perfil">
+              <div class="cardHead">
+                <div class="cardTitle">Perfil</div>
+                <div class="cardTools">
+                  <button class="miniBtn" data-action="editProfile" type="button">Editar</button>
+                  <button class="miniBtn" data-action="share" type="button">Compartilhar</button>
+                </div>
+              </div>
+
+              <div class="profileBody">
+                <div class="avatarBig" id="c_avatar" title="Clique para editar a imagem"></div>
+
+                <div class="profileText">
+                  <div class="editableTitle" id="c_displayName" data-edit="profile.name" tabindex="0" role="button" aria-label="Editar nome"></div>
+                  <div class="mutedLine">
+                    <span class="editable" data-edit="profile.class" tabindex="0" role="button">Classe</span>
+                    <span class="dot">•</span>
+                    <span class="editable" data-edit="profile.race" tabindex="0" role="button">Raça</span>
+                  </div>
+
+                  <div class="miniGrid">
+                    <div class="miniField">
+                      <div class="miniLabel">Nível</div>
+                      <input class="miniInput" id="c_level" type="number" min="1" max="20" />
+                    </div>
+                    <div class="miniField">
+                      <div class="miniLabel">Antecedente</div>
+                      <input class="miniInput" id="c_background" type="text" placeholder="Ex: Acólito" />
+                    </div>
+                  </div>
+
+                  <div class="mutedLine">
+                    <span class="miniLabel">XP</span>
+                    <input class="inlineInput" id="c_xp" type="number" min="0" step="1" />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </aside>
+
+          <!-- Coluna central -->
+          <section class="col center">
+            <section class="cCard summaryCard" aria-label="Resumo">
+              <div class="cardHead">
+                <div class="cardTitle">Resumo</div>
+                <div class="cardHint" id="c_summaryHint">Clique em qualquer campo para editar • Auto-save</div>
+              </div>
+              <div class="summaryGrid">
+                <div class="pillInfo">
+                  <div class="pillKey">Classe</div>
+                  <div class="pillVal editable" data-edit="profile.class" tabindex="0" role="button">—</div>
+                </div>
+                <div class="pillInfo">
+                  <div class="pillKey">Raça</div>
+                  <div class="pillVal editable" data-edit="profile.race" tabindex="0" role="button">—</div>
+                </div>
+                <div class="pillInfo">
+                  <div class="pillKey">Nível</div>
+                  <div class="pillVal" id="c_levelLabel">—</div>
+                </div>
+                <div class="pillInfo">
+                  <div class="pillKey">Antecedente</div>
+                  <div class="pillVal" id="c_backgroundLabel">—</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="cCard" aria-label="Atributos">
+              <div class="cardHead">
+                <div class="cardTitle">Atributos</div>
+                <div class="cardHint">Modificador = ⌊(atributo − 10) / 2⌋</div>
+              </div>
+
+              <div class="attrList" id="attrList"></div>
+            </section>
+
+            <section class="cCard" aria-label="Status">
+              <div class="cardHead">
+                <div class="cardTitle">Status</div>
+              </div>
+
+              <div class="statusGrid">
+                <div class="statBox">
+                  <div class="statLabel">CA</div>
+                  <input class="statInput" id="s_ac" type="number" min="0" />
+                </div>
+                <div class="statBox">
+                  <div class="statLabel">Iniciativa</div>
+                  <input class="statInput" id="s_init" type="number" />
+                </div>
+                <div class="statBox">
+                  <div class="statLabel">Desloc.</div>
+                  <input class="statInput" id="s_speed" type="number" min="0" />
+                </div>
+                <div class="statBox">
+                  <div class="statLabel">Dado de Vida</div>
+                  <input class="statInput" id="s_hd" type="text" placeholder="D8" />
+                </div>
+
+                <div class="statBox wide">
+                  <div class="statLabel">PV (Atual / Máx)</div>
+                  <div class="hpRow">
+                    <input class="statInput" id="s_hp" type="number" min="0" />
+                    <span class="hpSlash">/</span>
+                    <input class="statInput" id="s_hpMax" type="number" min="0" />
+                  </div>
+                </div>
+                <div class="statBox wide">
+                  <div class="statLabel">PV Temporários</div>
+                  <input class="statInput" id="s_hpTemp" type="number" min="0" />
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- Coluna direita -->
+          <aside class="col right">
+            <section class="cCard" aria-label="Traços de personalidade">
+              <div class="cardHead"><div class="cardTitle">Traços</div></div>
+              <textarea class="bigText" id="t_traits" placeholder="Clique e escreva…"></textarea>
+            </section>
+            <section class="cCard" aria-label="Ideais">
+              <div class="cardHead"><div class="cardTitle">Ideais</div></div>
+              <textarea class="bigText" id="t_ideals" placeholder="Clique e escreva…"></textarea>
+            </section>
+            <section class="cCard" aria-label="Ligações">
+              <div class="cardHead"><div class="cardTitle">Ligações</div></div>
+              <textarea class="bigText" id="t_bonds" placeholder="Clique e escreva…"></textarea>
+            </section>
+            <section class="cCard" aria-label="Defeitos">
+              <div class="cardHead"><div class="cardTitle">Defeitos</div></div>
+              <textarea class="bigText" id="t_flaws" placeholder="Clique e escreva…"></textarea>
+            </section>
+          </aside>
+        </div>
+
+        <!-- Seção inferior -->
+        <div class="lowerGrid">
+          <section class="cCard" aria-label="Perícias">
+            <div class="cardHead">
+              <div class="cardTitle">Perícias</div>
+              <div class="cardTools">
+                <button class="miniBtn" id="skillsModeBtn" type="button" title="Alternar modo">Modo: Manual</button>
+              </div>
+            </div>
+            <div class="skillsList" id="skillsList"></div>
+          </section>
+
+          <section class="cCard" aria-label="Proficiências">
+            <div class="cardHead"><div class="cardTitle">Proficiências & Passivas</div></div>
+            <textarea class="bigText" id="t_profs" placeholder="Armas, ferramentas, idiomas…"></textarea>
+          </section>
+
+          <section class="cCard" aria-label="Ataques e magias">
+            <div class="cardHead">
+              <div class="cardTitle">Ataques & Magias</div>
+              <div class="cardTools">
+                <button class="miniBtn" id="addAttackBtn" type="button">+ Adicionar</button>
+              </div>
+            </div>
+            <div class="table" id="attacksTable"></div>
+          </section>
+
+          <section class="cCard" aria-label="Equipamento">
+            <div class="cardHead">
+              <div class="cardTitle">Equipamento</div>
+              <div class="cardTools">
+                <button class="miniBtn" id="addItemBtn" type="button">+ Adicionar</button>
+              </div>
+            </div>
+            <div class="table" id="inventoryTable"></div>
+            <div class="moneyRow">
+              <div class="moneyLabel">Moedas</div>
+              <div class="moneyGrid">
+                <label class="moneyField">PC <input id="m_pc" type="number" min="0" /></label>
+                <label class="moneyField">PP <input id="m_pp" type="number" min="0" /></label>
+                <label class="moneyField">PE <input id="m_pe" type="number" min="0" /></label>
+                <label class="moneyField">PO <input id="m_po" type="number" min="0" /></label>
+                <label class="moneyField">PL <input id="m_pl" type="number" min="0" /></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="cCard" aria-label="Características e habilidades">
+            <div class="cardHead">
+              <div class="cardTitle">Características & Habilidades</div>
+              <div class="cardTools">
+                <button class="miniBtn" id="addFeatureBtn" type="button">+ Adicionar</button>
+              </div>
+            </div>
+            <div class="featuresList" id="featuresList"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABA: HISTORIA
+    ========================== -->
+    <section class="tabPanel" id="tab-historia" data-tabpanel="historia">
+      <div class="container">
+        <div class="tabTitle">História</div>
+        <div class="cCard">
+          <textarea class="bigText tall" id="tab_history" placeholder="Conte a história do personagem…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABA: RELACIONADOS
+    ========================== -->
+    <section class="tabPanel" id="tab-relacionados" data-tabpanel="relacionados">
+      <div class="container">
+        <div class="tabTitle">Relacionados</div>
+        <div class="cCard">
+          <textarea class="bigText tall" id="tab_relations" placeholder="NPCs, vínculos, aliados, rivais…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABA: DIARIO
+    ========================== -->
+    <section class="tabPanel" id="tab-diario" data-tabpanel="diario">
+      <div class="container">
+        <div class="tabTitle">Diário</div>
+        <div class="cCard">
+          <textarea class="bigText tall" id="tab_diary" placeholder="Registre sessões, eventos e lembranças…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABA: DESENHOS
+    ========================== -->
+    <section class="tabPanel" id="tab-desenhos" data-tabpanel="desenhos">
+      <div class="container">
+        <div class="tabTitle">Desenhos</div>
+        <div class="cCard">
+          <div class="drawingsHint">Cole links (um por linha) ou descreva referências. (Você pode também usar a galeria do site.)</div>
+          <textarea class="bigText tall" id="tab_drawings" placeholder="Links, descrições e referências…"></textarea>
+          <div class="drawingsActions">
+            <a class="btn ghost" href="gallery.html">Abrir galeria</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal simples de edição (reuso para editar textos rápidos) -->
+  <div class="cModal" id="editModal" aria-hidden="true" role="dialog" aria-label="Editar campo">
+    <div class="cModalBackdrop" data-close></div>
+    <div class="cModalCard" role="document">
+      <div class="cModalHead">
+        <div class="cModalTitle" id="editTitle">Editar</div>
+        <button class="iconBtn" data-close type="button" aria-label="Fechar">✕</button>
+      </div>
+      <div class="cModalBody">
+        <input class="modalInput" id="editInput" type="text" />
+        <div class="cModalActions">
+          <button class="btn ghost" data-close type="button">Cancelar</button>
+          <button class="btn primary" id="saveEditBtn" type="button">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="personagem.js"></script>
+</body>
+</html>

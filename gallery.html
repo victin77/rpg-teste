@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galeria — De Dignis Insanis Opera</title>
+  <meta name="description" content="Galeria de desenhos — De Dignis Insanis Opera" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="gallery">
+  <div class="bg" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="pill" title="Galeria">🎨 <span>Galeria</span></div>
+        <div class="brandText">
+          <div class="titleFancy" data-fx="glow">𝕯𝖊 𝕯𝖎𝖌𝖓𝖎𝖘 𝕴𝖓𝖘𝖆𝖓𝖎𝖘 𝕺𝖕𝖊𝖗𝖆</div>
+          <div class="subtitle">Desenhos • Notas • Referências</div>
+        </div>
+      </div>
+
+      <nav class="navlinks">
+        <a href="index.html#top">Início</a>
+        <a href="index.html#personagens">Personagens</a>
+        <a href="index.html#cronicas">Crônicas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section galleryPage">
+      <div class="container">
+        <div class="sectionHead reveal">
+          <h2>Desenhos</h2>
+          <p>Todos os desenhos da mesa, com notas. Clique em “Adicionar desenho” para incluir novos.</p>
+        </div>
+
+        <div class="galleryBar reveal" style="--d: 0.08s;">
+          <div class="galleryActions">
+            <button class="btn primary" id="addDrawingBtn" type="button">Adicionar desenho</button>
+            <a class="btn ghost" href="index.html#sobre">Voltar</a>
+          </div>
+
+          <div class="galleryTools" aria-label="Ferramentas da galeria">
+            <label class="gallerySearch" aria-label="Buscar desenhos">
+              <span class="icon" aria-hidden="true">⌕</span>
+              <input id="drawSearch" type="search" placeholder="Buscar por nota..." autocomplete="off" />
+            </label>
+
+            <label class="gallerySelect" aria-label="Ordenar desenhos">
+              <span class="icon" aria-hidden="true">⇅</span>
+              <select id="drawSort">
+                <option value="new">Mais recentes</option>
+                <option value="old">Mais antigos</option>
+                <option value="az">Nota (A → Z)</option>
+                <option value="za">Nota (Z → A)</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="drawGrid" id="drawGrid" aria-label="Grade de desenhos"></div>
+        <div class="carouselEmpty" id="drawGridEmpty" hidden>
+          Nenhum desenho ainda. Clique em <strong>Adicionar desenho</strong> para começar.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Viewer: abrir desenho (lightbox) -->
+  <div class="viewerModal" id="viewerModal" aria-hidden="true" role="dialog" aria-label="Visualizador de desenho">
+    <div class="viewerBackdrop" data-viewer-close></div>
+    <div class="viewerCard" role="document">
+      <button class="viewerClose" data-viewer-close aria-label="Fechar">✕</button>
+      <div class="viewerBody">
+        <div class="viewerImage" id="viewerImage"></div>
+        <div class="viewerMeta">
+          <div class="viewerTitle">Detalhes</div>
+          <div class="viewerNote" id="viewerNote">—</div>
+          <div class="viewerWhen" id="viewerWhen"></div>
+
+          <div class="viewerActions">
+            <button class="btn ghost" type="button" data-viewer-close>Fechar</button>
+            <button class="btn danger" id="viewerDelete" type="button">Excluir</button>
+          </div>
+          <div class="small muted" style="margin-top:10px">Dica: o carrossel do início usa essa mesma lista salva no seu navegador.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: adicionar desenho -->
+  <div class="drawModal" id="drawModal" aria-hidden="true" role="dialog" aria-label="Adicionar desenho">
+    <div class="drawBackdrop" data-draw-close></div>
+    <div class="drawCard" role="document">
+      <button class="drawClose" data-draw-close aria-label="Fechar">✕</button>
+      <div class="drawBody">
+        <div class="drawTitle">Adicionar desenho</div>
+        <p class="drawHint">Escolha uma imagem e escreva uma nota (opcional). Ela vai aparecer no carrossel e na galeria.</p>
+
+        <div class="drawForm">
+          <label class="drawLabel">
+            <span>Imagem</span>
+            <input id="drawFile" type="file" accept="image/*" />
+          </label>
+
+          <label class="drawLabel">
+            <span>Nota</span>
+            <textarea id="drawNote" rows="3" placeholder="Ex.: &quot;Terina no deserto — sessão 12&quot;"></textarea>
+          </label>
+
+          <div class="drawActions">
+            <button class="btn ghost" type="button" data-draw-close>Cancelar</button>
+            <button class="btn primary" id="drawSaveBtn" type="button" disabled>Adicionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
